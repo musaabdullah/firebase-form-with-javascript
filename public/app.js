@@ -14,6 +14,12 @@ const create = (data, id) => {
 }
 
 
+db.collection('users').onSnapshot(snapshot => {
+    console.log()
+})
+
+
+
 list.addEventListener('click', (e) => {
     e.stopPropagation();
     // console.log(e);

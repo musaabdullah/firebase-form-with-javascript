@@ -47,6 +47,10 @@
     font-weight: bold;
 }
 
+.form .form-group input:focus {
+    border: 1px solid royalblue;
+}
+
 .btn {
     width: 100px;
     height: 20px;
