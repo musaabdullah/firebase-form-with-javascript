@@ -3,13 +3,13 @@ const list = document.querySelector(".items");
 var template = ``;
 
 const create = (data, id) => {
-     template += `<li data-id=${id}>
+     template += `<div data-id=${id}>
     <span>${data.first_name}</span>
     <span>${data.last_name}</span>
     <span>${data.email_name}</span>
     <span>${data.password}</span>
     <button class="btn-danger>Delete</button>
-    </li>`;
+    </div>`;
     list.innerHTML = template;
 }
 
