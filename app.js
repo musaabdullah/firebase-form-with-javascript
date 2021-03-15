@@ -2,23 +2,29 @@ const form = document.querySelector("form");
 const list = document.querySelector(".items");
 var template = ``;
 
-const create = (data) => {
-
-
-    
-     template += `<div>
+const create = (data, id) => {
+     template += `<li data-id=${id}>
     <span>${data.first_name}</span>
     <span>${data.last_name}</span>
     <span>${data.email_name}</span>
     <span>${data.password}</span>
-    </div>`;
-
-
+    <button class="btn-danger>Delete</button>
+    </li>`;
     list.innerHTML = template;
-
 }
 
 
+list.addEventListener('click', (e) => {
+    e.stopPropagation();
+    // console.log(e);
+    if(e.target.tagName === "BUTTON"){
+         const id = e.target.parentElement.getAttribute("data-id");
+          
+         db.collection('users').doc(id).delete().then(res => {
+             console.log("user deleted");
+         })
+    }
+})
 
 
 form.addEventListener("submit", (e) => {
@@ -41,7 +47,7 @@ form.addEventListener("submit", (e) => {
 
 db.collection("users").get().then(snapshot => {
     snapshot.docs.forEach(doc => {
-        create(doc.data());
+        create(doc.data(),doc.id);
     })
 })
 
